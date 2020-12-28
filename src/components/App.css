@@ -1,0 +1,72 @@
+p {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  margin: 20px;
+}
+
+.activeField {
+  padding: 10px 0;
+  width: 50%;
+  background: #ddf2fd;
+  border-radius: 5px;
+  border: 1px solid #a5a5a5;
+}
+
+.error {
+  color: red;
+  margin: 10px;
+}
+
+label {
+  margin: 10px;
+  font-size: 18px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.elemtnt__form {
+  border-radius: 5px;
+}
+
+.element__input {
+  width: 50%;
+  font-size: 18px;
+  margin: 10px;
+  border: 1px solid #a3a3a3;
+  padding: 10px;
+  border-radius: 2px;
+  background: #e0f0f0;
+  outline: none;
+}
+.element__input:focus {
+  border: 1px solid orange;
+}
+
+.element__button {
+  width: 30%;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 2px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.element__button:hover {
+  border: 1px solid orange;
+  color: orange;
+}
+
+.element__output {
+  display: block;
+  width: 50%;
+  height: 20px;
+  font-size: 18px;
+  margin: 10px;
+  border: 1px solid #a3a3a3;
+  padding: 10px;
+  border-radius: 2px;
+  background: #e0f0e0;
+  outline: none;
+}
