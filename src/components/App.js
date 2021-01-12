@@ -1,34 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import Output from './Output/Output';
-import Input from './Input/Input';
+import { changeBinaryCompareDecimal } from '../store/actions';
 import './App.css';
+import Button from './button/Button';
+import Input from './input/Input';
+import Out from './out/Out';
 
 function App(props) {
-  let decimal;
-  let error = '';
-  if (/^[01]+$/.test(props.testStore)) {
-    decimal = parseInt(props.testStore, 2);
-  } else {
-    error = "Enter either 0 or 1";
-  }
-
+  const { initialStateNumber, changeBinaryCompareDecimal } = props;
+  const [count, setCount] = useState(0);
   return (
     <div className='container'>
       <h1>Binary to Decimal Converter</h1>
       <div className='activeField'>
-        <span className='error'>{error}</span>
-        <br />
-        <Input />
-        <Output output={decimal} />
+        <div className='element'>
+          <Input onChange={(event) => {
+            setCount(event)
+          }} />
+          <Out initialStateNumber={initialStateNumber} />
+          <Button count={count} changeBinaryCompareDecimal={changeBinaryCompareDecimal} />
+        </div>
       </div>
-    </div>
-  );
+    </div >
+  )
 }
 
-export default connect(
-  state => ({
-    testStore: state
-  })
-)(App);
+const putStateToProps = (state) => {
+  console.log(state);
+  return {
+    initialStateNumber: state.initialStateNumber
+  }
+}
+const putActionsToProps = (dispatch) => {
+  return {
+    changeBinaryCompareDecimal: bindActionCreators(changeBinaryCompareDecimal, dispatch)
+  }
+}
+
+export default connect(putStateToProps, putActionsToProps)(App);

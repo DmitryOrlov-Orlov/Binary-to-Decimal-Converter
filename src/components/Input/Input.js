@@ -1,34 +1,19 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
-const refInput = React.createRef();
-function Input(props) {
-  const handler = () => {
-    let input = refInput.current.value;
-    if (input.length <= 8) {
-      props.onBinary(input);
-      input = '';
-    }
-  }
-
+export default function Input(props) {
   return (
-    <div className='element'>
+    <div>
       <label>Binary Input</label>
-      <div >
-        <input className="element__input" type="text" placeholder='Enter 0 and 1' ref={refInput} />
-        <button className="element__button" onClick={handler}>Convert</button>
+      <div>
+        <input
+          className="element__input"
+          placeholder='Enter 0 and 1'
+          type="text"
+          onChange={(event) => {
+            props.onChange(event.target.value);
+          }}
+        />
       </div>
     </div>
   )
 }
-
-export default connect(
-  state => ({
-    testStore: state
-  }),
-  dispatch => ({
-    onBinary: (input) => {
-      dispatch({ type: 'BIN', binary: input })
-    }
-  })
-)(Input);
