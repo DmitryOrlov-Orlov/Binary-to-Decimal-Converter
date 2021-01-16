@@ -1,12 +1,19 @@
 import React from 'redux';
+import { connect } from 'react-redux';
+import { connvertBinToDec } from '../../actions';
 
-export default function Button(props) {
+function Button({ convert }) {
+
   return (
     <button
       className="element__button"
-      onClick={() => {
-        props.changeBinaryCompareDecimal(props.count)
-      }}
+      onClick={convert}
     >Convert</button>
   )
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  convert: () => dispatch(connvertBinToDec())
+})
+
+export default connect(null, mapDispatchToProps)(Button);

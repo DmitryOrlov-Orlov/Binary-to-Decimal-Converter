@@ -1,12 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-function Out(props) {
+function Out({ decimaVlalue }) {
+
   return (
     <div className='element'>
       <label>Decimal Output</label>
-      <div className='element__output'>{props.initialStateNumber}</div>
+      <div className='element__output'>{decimaVlalue}</div>
     </div>
   )
 }
 
-export default Out;
+const mapStateToProps = (state) => ({ decimaVlalue: state.decimalValue });
+
+export default connect(mapStateToProps)(Out);
